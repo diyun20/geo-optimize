@@ -1,0 +1,1192 @@
+﻿ /* =========== MyApp 鍩虹鏍峰紡 =========== */
+ 
+ *, *::before, *::after { box-sizing: border-box; }
+html { margin: 0; padding: 0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1f2937;
+    background: #f3f4f6;
+     line-height: 1.6;
+ }
+ 
+ .container {
+     max-width: 1100px;
+     margin: 0 auto;
+     padding: 0 20px;
+ }
+ 
+ /* =========== 瀵艰埅鏍?=========== */
+ .navbar {
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    padding-top: 0;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    padding-right: 20px;
+     padding-left: 20px;
+     position: fixed;
+     top: 0;
+     z-index: 100;
+  }
+  
+  .nav-inner {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     height: 56px;
+ }
+ 
+ .nav-brand {
+     font-size: 20px;
+     font-weight: 700;
+     color: #4f46e5;
+     text-decoration: none;
+ }
+ 
+ .nav-links {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     gap: 24px;
+ }
+ 
+ .nav-links a {
+     text-decoration: none;
+     color: #6b7280;
+     font-size: 14px;
+     font-weight: 500;
+     transition: color 0.2s;
+ }
+ 
+ .nav-links a:hover { color: #4f46e5; }
+ 
+ /* =========== 涓诲唴瀹瑰尯 =========== */
+.main-content {
+    padding-top: 88px;
+    padding-bottom: 32px;
+    min-height: calc(100vh - 60px);
+    transition: margin-left 0.2s;
+  }
+
+body.sidebar-visible {
+    overflow-x: hidden;
+}
+body.sidebar-visible .main-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+}
+
+/* =========== 渚ц竟鏍?=========== */
+.sidebar {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 56px);
+    background: #fff;
+    border-right: 1px solid #e5e7eb;
+    overflow-y: auto;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #4f46e5;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sidebar-user {}
+
+.sidebar-username {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.sidebar-role {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 12px 8px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #4b5563;
+    transition: all 0.15s;
+    margin-bottom: 2px;
+}
+
+.sidebar-link:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.sidebar-link.active {
+    background: #eef2ff;
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+.sidebar-icon {
+    font-size: 16px;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    padding: 12px 8px;
+    border-top: 1px solid #e5e7eb;
+}
+ 
+ /* =========== 鎸夐挳 =========== */
+ .btn {
+     display: inline-block;
+     padding: 10px 24px;
+     border: none;
+     border-radius: 6px;
+     font-size: 14px;
+     font-weight: 600;
+     cursor: pointer;
+     text-decoration: none;
+     transition: background 0.2s, opacity 0.2s;
+ }
+ 
+ .btn-primary { background: #4f46e5; color: #fff; }
+ .btn-primary:hover { background: #4338ca; }
+ 
+ .btn-outline {
+     background: transparent;
+     color: #4f46e5;
+     border: 2px solid #4f46e5;
+ }
+ .btn-outline:hover { background: #4f46e5; color: #fff; }
+ 
+ .btn-success { background: #10b981; color: #fff; }
+ .btn-success:hover { background: #059669; }
+ 
+ .btn-block { display: block; width: 100%; text-align: center; }
+ 
+ /* =========== 鎻愮ず娑堟伅 =========== */
+ .alert {
+     padding: 12px 16px;
+     border-radius: 6px;
+     margin-bottom: 16px;
+     font-size: 14px;
+ }
+ 
+ .alert-success { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+ .alert-error, .alert-danger { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+ .alert-warning { background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
+ .alert-info { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+ 
+ /* =========== 棣栭〉 Hero =========== */
+ .hero {
+     text-align: center;
+     padding: 60px 0 40px;
+ }
+ 
+ .hero h1 {
+     font-size: 36px;
+     margin: 0 0 12px;
+     color: #111827;
+ }
+ 
+ .hero-sub {
+     font-size: 18px;
+     color: #6b7280;
+     margin: 0 0 32px;
+ }
+ 
+ .hero-actions { display: flex; gap: 12px; justify-content: center; }
+ 
+ /* =========== 鐗规€у崱鐗?=========== */
+ .features {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     gap: 24px;
+     margin: 40px 0;
+ }
+ 
+ .feature-card {
+     background: #fff;
+     padding: 32px;
+     border-radius: 8px;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+     text-align: center;
+ }
+ 
+ .feature-icon { font-size: 40px; margin-bottom: 16px; }
+ .feature-card h3 { margin: 0 0 8px; font-size: 18px; }
+ .feature-card p { margin: 0; color: #6b7280; font-size: 14px; }
+ 
+ /* =========== 琛ㄥ崟 =========== */
+ .form-group { margin-bottom: 16px; }
+ 
+ .form-group label {
+     display: block;
+     margin-bottom: 6px;
+     font-weight: 600;
+     font-size: 14px;
+     color: #374151;
+ }
+ 
+ .form-group input, .form-group select, .form-group textarea {
+     width: 100%;
+     padding: 10px 12px;
+     border: 1px solid #d1d5db;
+     border-radius: 6px;
+     font-size: 14px;
+     font-family: inherit;
+     box-sizing: border-box;
+ }
+ 
+ .form-group input:focus {
+     border-color: #4f46e5;
+     outline: none;
+     box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+ }
+ 
+ /* =========== 璁よ瘉琛ㄥ崟 =========== */
+ .auth-form {
+     max-width: 400px;
+     margin: 40px auto;
+     background: #fff;
+     padding: 32px;
+     border-radius: 8px;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ }
+ 
+ .auth-form h2 {
+     margin: 0 0 24px;
+     text-align: center;
+     font-size: 22px;
+ }
+ 
+ .auth-alt {
+     text-align: center;
+     margin: 16px 0 0;
+     font-size: 14px;
+     color: #6b7280;
+ }
+ 
+ .auth-alt a { color: #4f46e5; text-decoration: none; }
+ 
+ /* =========== 椤甸潰澶撮儴 =========== */
+ .page-header {
+     margin-bottom: 24px;
+ }
+ 
+ .page-header h1 {
+     margin: 0 0 4px;
+     font-size: 24px;
+ }
+ 
+ .page-header p {
+     margin: 0;
+     color: #6b7280;
+     font-size: 14px;
+ }
+ 
+ /* =========== 鍐呭鍗＄墖 =========== */
+ .content-card {
+     background: #fff;
+     padding: 24px;
+     border-radius: 8px;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ }
+ 
+ .content-card ul { padding-left: 20px; }
+ .content-card li { margin-bottom: 8px; font-size: 14px; color: #374151; }
+ 
+ /* =========== 鎺у埗鍙?=========== */
+ .dashboard-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+     gap: 24px;
+ }
+ 
+ .dashboard-card {
+     background: #fff;
+     padding: 24px;
+     border-radius: 8px;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ }
+ 
+ .dashboard-card h3 {
+     margin: 0 0 16px;
+     font-size: 16px;
+ }
+ 
+ .card-icon { font-size: 32px; margin-bottom: 12px; }
+ 
+ .info-table { width: 100%; border-collapse: collapse; }
+ .info-table td {
+     padding: 8px 0;
+     font-size: 14px;
+     border-bottom: 1px solid #f3f4f6;
+ }
+ .info-table td:first-child { color: #6b7280; width: 100px; }
+ 
+ .quick-links { list-style: none; padding: 0; margin: 0; }
+ .quick-links li { margin-bottom: 8px; }
+ .quick-links a {
+     color: #4f46e5;
+     text-decoration: none;
+     font-size: 14px;
+ }
+.quick-links a:hover { text-decoration: underline; }
+ 
+ /* =========== 鏁版嵁缁熻鍗＄墖 =========== */
+ .stats-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+     gap: 16px;
+     margin-bottom: 24px;
+ }
+ 
+ .stat-card {
+     background: #fff;
+     border-radius: 8px;
+     padding: 20px;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+     display: flex;
+     align-items: flex-start;
+     gap: 14px;
+ }
+ 
+ .stat-icon {
+     width: 42px;
+     height: 42px;
+     border-radius: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 20px;
+     flex-shrink: 0;
+ }
+ 
+ .stat-icon.blue  { background: #eef2ff; }
+ .stat-icon.green { background: #f0fdf4; }
+ .stat-icon.orange{ background: #fff7ed; }
+ .stat-icon.purple{ background: #faf5ff; }
+ 
+ .stat-body {}
+ 
+ .stat-number {
+     font-size: 24px;
+     font-weight: 700;
+     color: #111827;
+     line-height: 1.2;
+ }
+ 
+ .stat-label {
+     font-size: 13px;
+     color: #6b7280;
+     margin-top: 2px;
+ }
+ 
+ /* =========== 閿欒椤甸潰 =========== */
+ .error-page {
+     text-align: center;
+     padding: 80px 0;
+ }
+ 
+ .error-page h1 {
+     font-size: 96px;
+     color: #d1d5db;
+     margin: 0;
+ }
+ 
+ .error-page p {
+     font-size: 18px;
+     color: #6b7280;
+     margin: 0 0 24px;
+ }
+ 
+ /* =========== 椤佃剼 =========== */
+ .footer {
+     background: #fff;
+     border-top: 1px solid #e5e7eb;
+     padding: 20px 0;
+     text-align: center;
+ }
+ 
+.footer p {
+    margin: 0;
+    font-size: 13px;
+    color: #9ca3af;
+}
+ 
+ /* =========== 浼佷笟鐭ヨ瘑搴?=========== */
+ .knowledge-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+     gap: 20px;
+ }
+ 
+ .knowledge-card {
+     background: #fff;
+     padding: 24px;
+     border-radius: 8px;
+     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+ }
+ 
+ .knowledge-card-wide {
+     grid-column: 1 / -1;
+ }
+ 
+ .knowledge-card h3 {
+     margin: 0 0 16px;
+     font-size: 16px;
+ }
+ 
+ .knowledge-card .card-icon {
+     font-size: 28px;
+     margin-bottom: 8px;
+ }
+ 
+ .knowledge-card textarea {
+     width: 100%;
+     padding: 10px 12px;
+     border: 1px solid #d1d5db;
+     border-radius: 6px;
+     font-size: 14px;
+     font-family: inherit;
+     box-sizing: border-box;
+     resize: vertical;
+ }
+ 
+ .knowledge-card textarea:focus {
+     border-color: #4f46e5;
+     outline: none;
+     box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+ }
+ 
+ /* =========== 鍝嶅簲寮?=========== */
+@media (max-width: 640px) {
+    .nav-links { gap: 12px; }
+    .nav-links a { font-size: 13px; }
+    body.sidebar-visible .main-content { margin-left: 0; }
+    .sidebar { display: none; }
+}
+ 
+/* =========== Hero Section =========== */
+.geo-hero {
+    position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden; padding: 0;
+    background: linear-gradient(180deg, #fbfcff 0%, #f0f5ff 50%, #fbfcff 100%);
+}
+.geo-hero::after {
+    content:''; position:absolute; top:0; left:0; right:0; height:4px;
+    background: linear-gradient(90deg, #336FFC, #6B74FE, #947AFC, #6B74FE, #336FFC);
+    pointer-events:none;
+}
+.geo-particles, .geo-hero-bg { display: none; }
+.geo-glow-1 { position:absolute; width:600px; height:600px;
+    background:radial-gradient(circle,rgba(51,111,252,0.04) 0%,transparent 70%);
+    top:-200px; right:-150px; border-radius:50%; pointer-events:none;
+}
+.geo-glow-2 { position:absolute; width:500px; height:500px;
+    background:radial-gradient(circle,rgba(107,116,254,0.03) 0%,transparent 70%);
+    bottom:-200px; left:-150px; border-radius:50%; pointer-events:none;
+}
+.geo-hero-inner { position:relative; z-index:2; width:100%; max-width:900px; margin:0 auto; padding:0 24px; }
+.geo-badge {
+    display:inline-block; padding:6px 18px; border-radius:20px; font-size:12px; font-weight:500;
+    background:rgba(51,111,252,0.06); color:#336FFC; margin-bottom:24px;
+    border:1px solid rgba(51,111,252,0.1); letter-spacing:1px;
+}
+.geo-hero-title { font-size:48px; font-weight:700; color:#17181b; margin:0 0 16px; line-height:1.15; letter-spacing:-1px; }
+.text-gradient {
+    background:linear-gradient(135deg,#336FFC 0%,#6B74FE 50%,#947AFC 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.geo-hero-sub { font-size:17px; color:#565E6D; margin:0 0 36px; line-height:1.7; max-width:560px; margin-left:auto; margin-right:auto; }
+.geo-hero-actions { display:flex; gap:12px; justify-content:center; margin-bottom:56px; flex-wrap:wrap; }
+.btn-prime {
+    display:inline-block; padding:14px 36px; font-size:15px; font-weight:600; border-radius:8px;
+    background:#336FFC; color:#fff; border:none; cursor:pointer;
+    text-decoration:none; transition:all .25s;
+}
+.btn-prime:hover { background:#2958d4; transform:translateY(-1px); color:#fff; }
+.btn-ghost {
+    display:inline-block; padding:14px 36px; font-size:15px; font-weight:600; border-radius:8px;
+    border:1.5px solid #d1d9e6; color:#3D3D3D; cursor:pointer; text-decoration:none;
+    transition:all .25s; background:transparent;
+}
+.btn-ghost:hover { border-color:#336FFC; color:#336FFC; }
+.geo-hero-stats { display:flex; justify-content:center; gap:48px; }
+.geo-stat { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.geo-stat-num { font-size:28px; font-weight:700; color:#17181b; }
+.geo-stat-label { font-size:13px; color:#565E6D; letter-spacing:0.5px; }
+
+.geo-section { padding:100px 0; }
+.geo-section-alt { background:#fbfcff; }
+.geo-section-cta {
+    background:linear-gradient(135deg,#336FFC,#432EFF); position:relative; overflow:hidden;
+}
+.geo-section-cta::before { content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse 600px 300px at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 70%); }
+.geo-section-label {
+    text-align:center; font-size:12px; font-weight:600; color:#336FFC; text-transform:uppercase;
+    letter-spacing:2px; margin-bottom:8px;
+}
+.geo-section-title { text-align:center; font-size:30px; font-weight:700; color:#17181b; margin:0 auto 12px; max-width:600px; }
+.geo-section-cta .geo-section-title { color:#fff; }
+.geo-section-desc { text-align:center; font-size:15px; color:#565E6D; margin:0 auto 48px; max-width:600px; }
+.geo-section-cta .geo-section-desc { color:rgba(255,255,255,0.7); }
+
+.geo-features { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
+.geo-feature-card {
+    background:#fff; border:1px solid rgba(0,0,0,0.04); border-radius:12px; padding:40px 32px;
+    text-align:center; transition:all .35s cubic-bezier(.4,0,.2,1);
+    position:relative; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.geo-feature-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg,#336FFC,#6B74FE); opacity:1; }
+.geo-feature-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(51,111,252,0.08); border-color:rgba(51,111,252,0.12); }
+.geo-feature-icon span {
+    display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px;
+    border-radius:12px; font-size:26px; margin-bottom:20px;
+    background:rgba(51,111,252,0.06); transition:transform .35s;
+}
+.geo-feature-card:hover .geo-feature-icon span { transform:scale(1.08); }
+.geo-feature-card h3 { font-size:17px; font-weight:600; margin:0 0 10px; color:#17181b; }
+.geo-feature-card p { font-size:14px; color:#565E6D; margin:0; line-height:1.7; }
+
+.geo-models { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+.geo-model-item {
+    display:flex; align-items:center; gap:12px; background:#fff;
+    border:1px solid rgba(0,0,0,0.04); border-radius:10px; padding:16px 24px;
+    transition:all .25s; cursor:default;
+}
+.geo-model-item:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(51,111,252,0.06); border-color:rgba(51,111,252,0.1); }
+.geo-model-icon { font-size:24px; }
+.geo-model-name { font-size:14px; font-weight:600; color:#17181b; }
+.geo-model-desc { font-size:12px; color:#565E6D; margin-top:2px; }
+@media(max-width:768px) {
+    .geo-hero-title{font-size:32px!important}
+    .geo-hero-stats{flex-direction:column;gap:14px}
+    .geo-features{grid-template-columns:1fr}
+    .geo-models{grid-template-columns:1fr 1fr}
+    .geo-section{padding:56px 0!important}
+    .geo-hero-actions{flex-direction:column;align-items:center}
+    .btn-prime,.btn-ghost{width:100%;text-align:center}
+}.dash-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:24px; }
+.dash-stat-card {
+    background:#fff; border-radius:12px; padding:24px; display:flex; align-items:center; gap:16px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.04); border:1px solid #f3f4f6;
+}
+.dash-stat-icon { width:48px; height:48px; border-radius:12px; display:flex; align-items:center;
+    justify-content:center; font-size:22px; flex-shrink:0; }
+.dash-stat-body {}
+.dash-stat-num { font-size:26px; font-weight:700; color:#111827; line-height:1.2; }
+.dash-stat-label { font-size:13px; color:#6b7280; margin-top:2px; }
+
+.dash-chart-wrap {
+    background:#fff; border-radius:12px; border:1px solid #f3f4f6;
+    box-shadow:0 1px 3px rgba(0,0,0,0.04); overflow:hidden;
+}
+.dash-chart-header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 24px 0; margin-bottom:-10px;
+}
+.dash-chart-header h3 { margin:0; font-size:16px; font-weight:600; color:#111827; }
+.dash-chart-badge {
+    padding:3px 10px; border-radius:12px; font-size:11px; font-weight:600;
+    background:#eef2ff; color:#4f46e5;
+}
+.dash-chart-body { padding:16px 24px 20px; position:relative; min-height:260px; }
+.dash-chart-empty {
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+}
+ 
+.dash-kw-section { margin-top:24px; }
+.dash-kw-title { font-size:14px; font-weight:600; color:#111827; margin-bottom:16px; }
+.dash-kw-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.dash-kw-item {
+    display:flex; align-items:center; gap:8px; padding:8px 12px;
+    background:#f9fafb; border-radius:6px; font-size:13px;
+}
+.dash-kw-rank {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:20px; height:20px; border-radius:4px; font-size:11px; font-weight:600;
+    background:#eef2ff; color:#4f46e5; flex-shrink:0;
+}
+.dash-kw-text { color:#374151; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+@media(max-width:640px){ .dash-kw-grid{grid-template-columns:1fr 1fr;} }
+
+/* =========== GEO7 锟界范 锟斤拷页锟斤拷锟斤拷式 =========== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap');
+
+/* --- 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷页透锟斤拷锟斤拷锟斤拷页实色锟斤拷 --- */
+.homepage .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 50;
+    background: transparent;
+    transition: background-color 0.3s, padding 0.3s, box-shadow 0.3s;
+    padding: 0 0 16px;
+}
+.homepage .navbar.scrolled {
+    background: rgba(15, 52, 96, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    padding: 0 0 8px;
+}
+.homepage .navbar .nav-brand,
+.homepage .navbar .nav-links a { color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.homepage .navbar .nav-links a:hover { color: #E94560; }
+.homepage .navbar .nav-brand { font-size: 22px; font-weight: 700; }
+
+/* 锟斤拷页锟斤拷锟斤拷锟斤拷 */
+body:not(.homepage) .navbar {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 20px;
+}
+body:not(.homepage) .navbar .nav-inner { height: 56px; }
+body:not(.homepage) .navbar .nav-brand { font-size: 20px; font-weight: 700; color: #0F3460; text-decoration: none; }
+body:not(.homepage) .navbar .nav-links a { color: #6b7280; }
+body:not(.homepage) .navbar .nav-links a:hover { color: #0F3460; }
+
+/* 锟斤拷页 CTA 锟斤拷钮 */
+.homepage .btn-prime {
+    display: inline-block; padding: 12px 36px; font-size: 15px; font-weight: 600; border-radius: 9999px;
+    background: #E94560; color: #fff; border: none; cursor: pointer;
+    text-decoration: none; transition: all .25s;
+}
+.homepage .btn-prime:hover { background: #d63850; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(233,69,96,0.3); }
+.homepage .btn-ghost {
+    display: inline-block; padding: 12px 36px; font-size: 15px; font-weight: 600; border-radius: 9999px;
+    border: 2px solid rgba(255,255,255,0.4); color: #fff; cursor: pointer; text-decoration: none;
+    transition: all .25s; background: transparent;
+}
+.homepage .btn-ghost:hover { border-color: #E94560; color: #E94560; }
+
+/* --- Hero 全锟斤拷 --- */
+.geo7-hero {
+    position: relative; height: 100vh; display: flex;
+    align-items: center; justify-content: center; overflow: hidden;
+    background: linear-gradient(135deg, #0F3460 0%, #16213E 40%, #1a3a6a 100%);
+}
+.geo7-hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(135deg, #0F3460 0%, #16213E 40%, #1a3a6a 100%);
+}
+.geo7-hero-bg::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+        radial-gradient(ellipse 800px 400px at 20% 30%, rgba(233,69,96,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 300px at 80% 60%, rgba(26,115,232,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.geo7-hero-grid {
+    position: absolute; inset: 0; z-index: 1;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+.geo7-hero-orb1, .geo7-hero-orb2 { position: absolute; border-radius: 50%; pointer-events: none; z-index: 1; }
+.geo7-hero-orb1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(26,115,232,0.08) 0%, transparent 70%); top: -150px; right: -100px; }
+.geo7-hero-orb2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(233,69,96,0.05) 0%, transparent 70%); bottom: -120px; left: -100px; }
+.geo7-hero-inner { position: relative; z-index: 10; text-align: center; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.geo7-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; color: #fff;
+    line-height: 1.15; margin-bottom: 24px;
+    animation: geo7FadeIn 1s ease-out;
+}
+.geo7-hero-title .text-accent { color: #E94560; }
+.geo7-hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255,255,255,0.85);
+    max-width: 680px; margin: 0 auto 40px; line-height: 1.7;
+    animation: geo7FadeIn 1.2s ease-out;
+}
+.geo7-hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: geo7FadeIn 1.4s ease-out; }
+.geo7-hero-scroll {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    z-index: 10; animation: geo7Bounce 2s infinite;
+}
+.geo7-hero-scroll a { color: rgba(255,255,255,0.6); font-size: 28px; transition: color 0.2s; }
+.geo7-hero-scroll a:hover { color: #E94560; }
+
+@keyframes geo7FadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes geo7Bounce { 0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-12px); } 60% { transform: translateX(-50%) translateY(-6px); } }
+
+/* --- 通锟矫凤拷锟斤拷 --- */
+.geo7-section { padding: 90px 0; }
+.geo7-section-alt { background: #F5F5F7; }
+.geo7-section-dark { background: #0F3460; }
+.geo7-section-label { text-align: center; font-size: 12px; font-weight: 600; color: #E94560; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+.geo7-section-title { text-align: center; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: #0F3460; margin: 0 auto 12px; max-width: 700px; }
+.geo7-section-dark .geo7-section-title { color: #fff; }
+.geo7-section-accent-line { width: 80px; height: 4px; background: #E94560; margin: 0 auto 24px; border-radius: 2px; }
+.geo7-section-desc { text-align: center; font-size: 16px; color: #6b7280; margin: 0 auto 56px; max-width: 680px; line-height: 1.7; }
+.geo7-section-dark .geo7-section-desc { color: rgba(255,255,255,0.7); }
+
+/* --- 锟斤拷锟斤拷锟斤拷锟斤拷 --- */
+.geo7-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.geo7-about-image { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.1); transition: transform 0.4s ease; }
+.geo7-about-image:hover { transform: scale(1.02); }
+.geo7-about-image .placeholder-img {
+    width: 100%; height: 380px;
+    background: linear-gradient(135deg, #1a73e8 0%, #0F3460 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.3); font-size: 80px;
+}
+.geo7-about-image::after { content: ''; position: absolute; width: 100px; height: 100px; background: rgba(233,69,96,0.12); border-radius: 50%; bottom: -20px; left: -20px; z-index: -1; }
+.geo7-about-text h3 { font-size: 24px; font-weight: 700; color: #0F3460; margin-bottom: 16px; }
+.geo7-about-text p { color: #6b7280; line-height: 1.8; margin-bottom: 16px; font-size: 15px; }
+.geo7-about-mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.geo7-about-mini-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.geo7-about-mini-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.geo7-about-mini-card .icon { color: #E94560; font-size: 28px; margin-bottom: 10px; }
+.geo7-about-mini-card h4 { font-size: 16px; font-weight: 600; color: #0F3460; margin-bottom: 4px; }
+.geo7-about-mini-card p { font-size: 13px; color: #9ca3af; margin: 0; }
+
+/* --- 锟斤拷锟斤拷锟斤拷 --- */
+.geo7-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+.geo7-stat-item { text-align: center; padding: 24px; }
+.geo7-stat-num { font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: #0F3460; margin-bottom: 4px; }
+.geo7-stat-label { font-size: 14px; color: #6b7280; }
+
+/* --- 锟斤拷锟斤拷片 --- */
+.geo7-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.geo7-service-card { background: #F5F5F7; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.04); transition: all 0.35s ease; }
+.geo7-service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+.geo7-service-img { height: 200px; overflow: hidden; }
+.geo7-service-img .placeholder-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px; transition: transform 0.5s ease; }
+.geo7-service-card:hover .geo7-service-img .placeholder-img { transform: scale(1.1); }
+.geo7-service-body { padding: 28px; }
+.geo7-service-icon { width: 44px; height: 44px; background: rgba(15,52,96,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; color: #0F3460; }
+.geo7-service-body h3 { font-size: 17px; font-weight: 600; color: #0F3460; margin-bottom: 8px; }
+.geo7-service-body p { font-size: 14px; color: #6b7280; line-height: 1.7; margin-bottom: 16px; }
+.geo7-service-link { color: #1A73E8; font-weight: 500; font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.geo7-service-link:hover { color: #E94560; }
+
+/* --- 锟斤拷锟斤拷锟斤拷锟狡ｏ拷锟斤拷色锟斤拷图锟斤拷锟斤拷 --- */
+.geo7-benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.geo7-benefit-item { display: flex; margin-bottom: 32px; }
+.geo7-benefit-icon { flex-shrink: 0; width: 44px; height: 44px; background: #E94560; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; margin-top: 2px; }
+.geo7-benefit-text { margin-left: 20px; }
+.geo7-benefit-text h3 { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.geo7-benefit-text p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+.geo7-chart-wrap { background: rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; backdrop-filter: blur(10px); }
+
+/* --- 锟酵伙拷锟斤拷锟斤拷 --- */
+.geo7-testimonials-wrap { overflow: hidden; position: relative; }
+.geo7-testimonial-track { display: flex; transition: transform 0.5s ease; }
+.geo7-testimonial-card { flex: 0 0 calc(100% / 3); padding: 0 12px; }
+.geo7-testimonial-inner { background: #F5F5F7; border-radius: 14px; padding: 32px; height: 100%; }
+.geo7-testimonial-header { display: flex; align-items: center; margin-bottom: 20px; }
+.geo7-testimonial-avatar { width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0; overflow: hidden; }
+.geo7-testimonial-avatar .placeholder-avatar { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+.geo7-testimonial-meta { margin-left: 14px; }
+.geo7-testimonial-meta h4 { font-size: 15px; font-weight: 600; color: #0F3460; margin-bottom: 2px; }
+.geo7-testimonial-meta p { font-size: 13px; color: #9ca3af; margin: 0; }
+.geo7-stars { color: #f59e0b; margin-bottom: 12px; font-size: 14px; }
+.geo7-testimonial-inner > p { font-size: 14px; color: #6b7280; line-height: 1.7; font-style: italic; }
+.geo7-testimonial-dots { display: flex; justify-content: center; gap: 10px; margin-top: 32px; }
+.geo7-testimonial-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(15,52,96,0.2); border: none; cursor: pointer; transition: all 0.3s; }
+.geo7-testimonial-dot.active { background: #0F3460; transform: scale(1.2); }
+
+/* --- 锟斤拷系锟斤拷锟斤拷 --- */
+.geo7-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.geo7-contact-info h3 { font-size: 13px; font-weight: 600; color: #E94560; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+.geo7-contact-info h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: #fff; margin-bottom: 20px; }
+.geo7-contact-info > p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 32px; line-height: 1.7; }
+.geo7-contact-detail { display: flex; margin-bottom: 20px; }
+.geo7-contact-detail-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #E94560; font-size: 16px; }
+.geo7-contact-detail-text { margin-left: 20px; }
+.geo7-contact-detail-text h4 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.geo7-contact-detail-text p { font-size: 14px; color: rgba(255,255,255,0.6); margin: 0; }
+.geo7-contact-socials { display: flex; gap: 12px; margin-top: 28px; }
+.geo7-contact-socials a { width: 42px; height: 42px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; transition: all 0.25s; }
+.geo7-contact-socials a:hover { background: #E94560; color: #fff; }
+.geo7-contact-form { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+.geo7-contact-form h3 { font-size: 20px; font-weight: 700; color: #0F3460; margin-bottom: 24px; }
+
+/* --- 锟截碉拷锟斤拷锟斤拷 --- */
+.geo7-back-top { position: fixed; bottom: 32px; right: 32px; z-index: 40; width: 48px; height: 48px; background: #E94560; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; box-shadow: 0 4px 20px rgba(233,69,96,0.3); transition: all 0.3s; opacity: 0; visibility: hidden; cursor: pointer; border: none; }
+.geo7-back-top.visible { opacity: 1; visibility: visible; }
+.geo7-back-top:hover { background: #d63850; transform: translateY(-3px); box-shadow: 0 6px 25px rgba(233,69,96,0.4); }
+
+/* --- 页锟斤拷 --- */
+.geo7-footer { background: #16213E; color: #fff; padding: 48px 0 0; }
+.geo7-footer .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 32px; }
+.geo7-footer .footer-brand { display: flex; align-items: center; margin-bottom: 12px; }
+.geo7-footer .footer-brand i { color: #E94560; font-size: 28px; margin-right: 8px; }
+.geo7-footer .footer-brand span { font-size: 20px; font-weight: 700; color: #fff; }
+.geo7-footer .footer-brand .text-accent { color: #E94560; }
+.geo7-footer .footer-desc { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; margin-bottom: 16px; max-width: 300px; }
+.geo7-footer .footer-socials { display: flex; gap: 12px; }
+.geo7-footer .footer-socials a { color: rgba(255,255,255,0.4); transition: color 0.2s; font-size: 18px; }
+.geo7-footer .footer-socials a:hover { color: #E94560; }
+.geo7-footer h4 { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #fff; }
+.geo7-footer ul { list-style: none; padding: 0; margin: 0; }
+.geo7-footer ul li { margin-bottom: 8px; }
+.geo7-footer ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.geo7-footer ul li a:hover { color: #E94560; }
+.geo7-footer .footer-contact-item { display: flex; align-items: flex-start; margin-bottom: 12px; }
+.geo7-footer .footer-contact-item i { color: #E94560; margin-right: 12px; margin-top: 3px; font-size: 14px; }
+.geo7-footer .footer-contact-item span { color: rgba(255,255,255,0.5); font-size: 14px; }
+.geo7-footer .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; text-align: center; color: rgba(255,255,255,0.35); font-size: 13px; }
+
+/* --- 锟狡讹拷锟斤拷 --- */
+@media (max-width: 768px) {
+    .geo7-about-grid { grid-template-columns: 1fr; }
+    .geo7-services { grid-template-columns: 1fr; }
+    .geo7-benefits-grid { grid-template-columns: 1fr; }
+    .geo7-contact-grid { grid-template-columns: 1fr; }
+    .geo7-stats { grid-template-columns: repeat(2, 1fr); }
+    .geo7-testimonial-card { flex: 0 0 100%; }
+    .geo7-section { padding: 56px 0; }
+    .geo7-footer .footer-grid { grid-template-columns: 1fr; }
+    .geo7-about-mini-cards { grid-template-columns: 1fr; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .geo7-testimonial-card { flex: 0 0 50%; }
+    .geo7-services { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --- 鏇挎崲娓愬彉鍗犱綅涓虹湡瀹炲浘鐗?--- */
+.geo7-hero-bg-img {
+    position: absolute; inset: 0; z-index: 0;
+    width: 100%; height: 100%; object-fit: cover;
+}
+/* 鍗婇€忔槑娓愬彉瑕嗙洊灞傚湪鍥剧墖涔嬩笂 */
+.geo7-hero-bg {
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(15,52,96,0.88) 0%, rgba(22,33,62,0.92) 40%, rgba(26,58,106,0.88) 100%);
+}
+.geo7-hero-grid { z-index: 2; }
+.geo7-hero-orb1, .geo7-hero-orb2 { z-index: 2; }
+
+/* 閫氱敤鐪熷疄鍥剧墖鏍峰紡 */
+.real-img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.geo7-about-image { overflow: hidden; }
+.geo7-about-image .real-img { transition: transform 0.5s ease; }
+.geo7-about-image:hover .real-img { transform: scale(1.05); }
+
+.geo7-service-img .real-img { transition: transform 0.5s ease; }
+.geo7-service-card:hover .geo7-service-img .real-img { transform: scale(1.1); }
+
+.geo7-testimonial-avatar .real-img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+}
+
+/* --- 绠＄悊鍚庡彴閫氱敤鍗＄墖鏍峰紡 --- */
+.admin-page-header {
+    margin-bottom: 28px;
+}
+.admin-page-header h1 {
+    font-size: 24px; font-weight: 700; color: #0F3460; margin: 0 0 4px;
+}
+.admin-page-header p {
+    font-size: 14px; color: #6b7280; margin: 0;
+}
+
+.admin-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.03);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+.admin-card-accent {
+    height: 3px;
+    background: linear-gradient(90deg, #0F3460, #E94560);
+}
+.admin-card-body {
+    padding: 24px;
+}
+.admin-card-body p {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.7;
+}
+.admin-card-body h3 {
+    font-size: 16px; font-weight: 600; color: #0F3460; margin: 0 0 16px;
+}
+
+/* 缁熻鍗＄墖 */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.admin-stat-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.03);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+    text-decoration: none;
+}
+.admin-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+.admin-stat-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+}
+.admin-stat-num {
+    font-size: 22px; font-weight: 700; color: #111827; line-height: 1.2;
+}
+.admin-stat-label {
+    font-size: 13px; color: #6b7280; margin-top: 2px;
+}
+
+/* 琛ㄦ牸鏍峰紡 */
+.admin-table-wrap {
+    overflow-x: auto;
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.admin-table thead th {
+    padding: 12px 10px;
+    border-bottom: 2px solid #eef1f5;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+.admin-table tbody tr {
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.15s;
+}
+.admin-table tbody tr:hover {
+    background: #f8f9fb;
+}
+.admin-table tbody tr:last-child {
+    border-bottom: none;
+}
+.admin-table tbody td {
+    padding: 12px 10px;
+    color: #374151;
+}
+.admin-table tbody td .role-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.admin-table a {
+    color: #E94560;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.admin-table a:hover {
+    color: #0F3460;
+}
+
+/* 绠＄悊鎸夐挳 */
+.admin-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.admin-btn-primary {
+    background: #0F3460;
+    color: #fff;
+}
+.admin-btn-primary:hover {
+    background: #16213E;
+}
+.admin-btn-accent {
+    background: #E94560;
+    color: #fff;
+}
+.admin-btn-accent:hover {
+    background: #d63850;
+}
+.admin-btn-ghost {
+    background: transparent;
+    color: #0F3460;
+    border: 1.5px solid #d1d9e6;
+}
+.admin-btn-ghost:hover {
+    border-color: #0F3460;
+}
+.admin-btn-sm {
+    padding: 6px 14px;
+    font-size: 12px;
+}
+
+/* 鍥捐〃 */
+.admin-chart {
+    padding: 8px 0;
+    min-height: 200px;
+}
+
+/* 琛ㄥ崟琛?*/
+.admin-form-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: end;
+}
+.admin-form-group {
+    margin-bottom: 0;
+}
+.admin-form-group.flex-1 {
+    flex: 1;
+    min-width: 140px;
+}
+.admin-form-group label {
+    display: block;
+    font-weight: 500;
+    font-size: 13px;
+    color: #374151;
+    margin-bottom: 4px;
+}
+.admin-form-group input,
+.admin-form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+.admin-form-group input:focus,
+.admin-form-group select:focus {
+    border-color: #0F3460;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(15,52,96,0.08);
+}
+
+/* 璇︽儏闈㈡澘 */
+.admin-detail-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.admin-detail-info {
+    flex: 1;
+    min-width: 200px;
+}
+.admin-detail-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.admin-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-detail-table td {
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f3f4f6;
+}
+.admin-detail-table td:first-child {
+    color: #6b7280;
+    width: 80px;
+}
+
+/* 鎼滅储浠〃鐩樺浘琛ㄥ寘瑁?*/
+.admin-chart-card .admin-chart-inner {
+    position: relative;
+    min-height: 200px;
+}
+
+/* 鏁版嵁鍒锋柊鎸夐挳鐗规畩澶勭悊 */
+.admin-stat-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 鐢ㄦ潵鎺掑叧閿瘝 */
+.admin-kw-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+@media(max-width:640px){ .admin-kw-grid { grid-template-columns:1fr 1fr; } }
+.admin-kw-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f9fafb;
+    border-radius: 6px;
+    font-size: 13px;
+}
+.admin-kw-rank {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 4px; font-size: 11px; font-weight: 600;
+    background: #eef2ff; color: #4f46e5; flex-shrink: 0;
+}
+

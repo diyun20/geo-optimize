@@ -1,0 +1,1 @@
+ALTER TABLE trial_settings ADD COLUMN IF NOT EXISTS max_value INT NOT NULL DEFAULT 0 AFTER enabled;

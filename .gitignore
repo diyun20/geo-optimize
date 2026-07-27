@@ -1,0 +1,36 @@
+# 授权验证文件
+.*.php
+!.gitignore
+
+# 服务器配置
+.user.ini
+.htaccess
+
+# 数据库密码
+config/database.php
+
+# 运行时数据
+storage/logs/
+storage/tmp/
+storage/worker_pids/
+storage/app.log
+storage/cron_last_scan.txt
+storage/version.txt
+storage/installed.lock
+
+# 调试/工具文件
+_show_create.php
+_show_users.php
+_sidebar_check.php
+
+# 发布工具
+geo_publisher/
+tools/release.php
+
+# 安装教程
+安装教程.txt
+
+# IDE
+.vscode/
+.idea/
+.agents/
