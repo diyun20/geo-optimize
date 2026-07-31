@@ -309,9 +309,9 @@
                               // 自动创建默认管理员
                               $hashed = password_hash('123456', PASSWORD_DEFAULT);
                               $now = date('Y-m-d H:i:s');
-                              $stmt = $pdo->prepare('INSERT INTO users (username, email, password, role, created_at) VALUES (?, ?, ?, ?, ?)');
-                              $stmt->execute(['admin', 'admin@admin.com', $hashed, 'admin', $now]);
-                              $installMessages[] = ['type' => 'success', 'text' => '默认管理员已创建 (admin / 123456)'];
+$stmt = $pdo->prepare('INSERT IGNORE INTO users (username, email, password, role, created_at) VALUES (?, ?, ?, ?, ?)');
+                               $stmt->execute(['admin', 'admin@admin.com', $hashed, 'admin', $now]);
+                               $installMessages[] = ['type' => 'success', 'text' => '默认管理员已创建 (admin / 123456)'];
                               
                               // 写入锁定文件
                               $lockData = json_encode([
@@ -382,7 +382,7 @@
                                      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                                  ]);
                                  
-                                 $stmt = $pdo->prepare('INSERT INTO users (username, email, password, role, created_at) VALUES (?, ?, ?, ?, ?)');
+$stmt = $pdo->prepare('INSERT IGNORE INTO users (username, email, password, role, created_at) VALUES (?, ?, ?, ?, ?)');
                                  $stmt->execute([$adminUser, $adminEmail, $hashed, 'admin', $now]);
                                  
                                  // 写入锁定文件
