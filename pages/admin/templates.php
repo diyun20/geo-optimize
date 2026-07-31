@@ -48,7 +48,7 @@ if ($action === 'activate' && ($id = (int)($_GET['id'] ?? 0))) {
                . "?>";
 
         // 写入模板内容到 home.php（带预览守卫）
-        file_put_contents(__DIR__ . '/../pages/home.php', $guard . $content);
+        file_put_contents(__DIR__ . '/../home.php', $guard . $content);
 
         // 更新状态
         dbExecute("UPDATE home_templates SET is_active=0");
@@ -86,7 +86,7 @@ if ($action === 'delete' && ($id = (int)($_GET['id'] ?? 0))) {
 
 // ---- 导入当前首页为新模板 ----
 if ($action === 'import_current') {
-    $current = file_get_contents(__DIR__ . '/../pages/home.php');
+    $current = file_get_contents(__DIR__ . '/../home.php');
     // 剥离预览守卫
     $current = preg_replace('/^<\?php\s*\/\/\s*预览模式.*?\?>\s*/s', '', $current);
     preg_match('/\$pageTitle\s*=\s*\'([^\']+)\'/', $current, $m);
@@ -103,7 +103,7 @@ foreach ($templates as $t) { if ($t['is_active']) { $activeTpl = $t; break; } }
 
 // 如果没有模板，自动导入当前首页
 if (empty($templates)) {
-    $current = file_get_contents(__DIR__ . '/../pages/home.php');
+    $current = file_get_contents(__DIR__ . '/../home.php');
     dbExecute("INSERT INTO home_templates (name, description, content, thumbnail, is_active, created_at, updated_at) VALUES (?,?,?,?,1,NOW(),NOW())",
         ['默认模板', '系统初始首页模板', $current, '']);
     $templates = dbFetchAll("SELECT * FROM home_templates ORDER BY is_active DESC, updated_at DESC");
