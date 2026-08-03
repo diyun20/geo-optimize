@@ -1,4 +1,5 @@
 <?php $pageTitle = "注册 - GEO优化";
+if (isLoggedIn()) redirect("index.php?route=dashboard");
 require_once __DIR__ . '/../includes/sms.php';
 require_once __DIR__ . '/../includes/mail.php';
 

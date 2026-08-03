@@ -1,6 +1,7 @@
 <?php $pageTitle = "登录 - GEO优化"; ?>
 
 <?php
+if (isLoggedIn()) redirect("index.php?route=dashboard");
 $captchaOn = (dbFetchOne("SELECT setting_value FROM site_settings WHERE setting_key='captcha_enabled'")['setting_value'] ?? '0') === '1';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"] ?? "";

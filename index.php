@@ -14,11 +14,11 @@ ini_set('display_errors', 0);
  /**
   * 涓诲簲鐢ㄥ叆鍙?- 鍓嶇鎺у埗鍣?  * 鎵€鏈夐〉闈㈣姹傞兘缁忚繃姝ゆ枃浠惰矾鐢?  */
  
- // 瀹夎妫€娴嬶細濡傛灉鐩存帴璁块棶浜?index.php 涓旀湭瀹夎锛岄噸瀹氬悜鍒?install.php
- if (!file_exists(__DIR__ . '/config/database.php')) {
-     require __DIR__ . '/install.php';
-     exit;
- }
+// 安装检测：任一文件缺失则跳转安装向导
+if (!file_exists(__DIR__ . '/storage/installed.lock') || !file_exists(__DIR__ . '/config/database.php')) {
+    require __DIR__ . '/install.php';
+    exit;
+}
  
  date_default_timezone_set('Asia/Hong_Kong');
 if (session_status() === PHP_SESSION_NONE) session_start(); ob_start();

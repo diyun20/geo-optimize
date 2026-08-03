@@ -34,3 +34,4 @@ tools/release.php
 .vscode/
 .idea/
 .agents/
+*.zip
