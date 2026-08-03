@@ -68,8 +68,10 @@ if (isAdmin()) {
     $workerCount  = function_exists('getWorkerCount') ? getWorkerCount() : 0;
 
     // 工单
-    $openTickets     = dbFetchOne("SELECT COUNT(*) as c FROM tickets WHERE status='open'")['c'] ?? 0;
-    $progressTickets = dbFetchOne("SELECT COUNT(*) as c FROM tickets WHERE status='in_progress'")['c'] ?? 0;
+    try {
+        $openTickets     = dbFetchOne("SELECT COUNT(*) as c FROM tickets WHERE status='open'")['c'] ?? 0;
+        $progressTickets = dbFetchOne("SELECT COUNT(*) as c FROM tickets WHERE status='in_progress'")['c'] ?? 0;
+    } catch (Exception $e) { $openTickets = 0; $progressTickets = 0; }
     $totalTickets    = $openTickets + $progressTickets;
 
     // API
@@ -158,11 +160,13 @@ if ($latestScan && strtotime($latestScan["created_at"]) > time() - 3600) { $canR
     </div>
     <?php
     // 工单提示
-    if (isAdminOrAgent()) {
-        $myOpenTickets = dbFetchOne("SELECT COUNT(*) as c FROM tickets WHERE status='open'")['c'] ?? 0;
-    } else {
-        $myOpenTickets = dbFetchOne("SELECT COUNT(*) as c FROM tickets WHERE user_id=? AND status IN ('open','in_progress')", [$user['id']])['c'] ?? 0;
-    }
+    try {
+        if (isAdminOrAgent()) {
+            $myOpenTickets = dbFetchOne("SELECT COUNT(*) as c FROM tickets WHERE status='open'")['c'] ?? 0;
+        } else {
+            $myOpenTickets = dbFetchOne("SELECT COUNT(*) as c FROM tickets WHERE user_id=? AND status IN ('open','in_progress')", [$user['id']])['c'] ?? 0;
+        }
+    } catch (Exception $e) { $myOpenTickets = 0; }
     if ($myOpenTickets > 0):
     ?>
     <a href="index.php?route=tickets" style="text-decoration:none;color:#dc2626;font-weight:700;font-size:14px;animation:pulse 2s infinite;">

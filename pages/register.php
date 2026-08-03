@@ -24,6 +24,7 @@ if (isset($_GET['action'])) {
 
 $smsOn = smsIsConfigured();
 $mailOn = mailIsConfigured();
+$captchaOn = (dbFetchOne("SELECT setting_value FROM site_settings WHERE setting_key='captcha_enabled'")['setting_value'] ?? '0') === '1';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST["username"] ?? "");
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         setFlash("error", "短信验证码错误");
     } elseif ($mailOn && !mailVerify($email, trim($_POST['mail_code'] ?? ''))) {
         setFlash("error", "邮箱验证码错误");
-    } elseif (empty($_POST["captcha"]) || strtoupper($_POST["captcha"]) !== ($_SESSION["captcha_code"] ?? "")) {
+    } elseif ($captchaOn && (empty($_POST["captcha"]) || strtoupper($_POST["captcha"]) !== ($_SESSION["captcha_code"] ?? ""))) {
         setFlash("error", "验证码错误");
     } else {
         $refCode = trim($_POST['ref'] ?? $_GET['ref'] ?? '');
@@ -119,6 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
 
                 <!-- 图形验证码 -->
+                <?php if ($captchaOn): ?>
                 <div style="margin-bottom:20px;">
                     <label style="display:block;font-weight:500;font-size:14px;color:#374151;margin-bottom:6px;">验证码</label>
                     <div style="display:flex;gap:10px;align-items:center;">
@@ -126,6 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <img src="captcha.php" onclick="this.src='captcha.php?'+Date.now()" style="height:44px;border-radius:8px;cursor:pointer;border:1px solid #e5e7eb;" title="点击刷新">
                     </div>
                 </div>
+                <?php endif; ?>
 
                 <button type="submit" style="width:100%;padding:14px 24px;background:#E94560;color:#fff;font-weight:600;font-size:15px;border:none;border-radius:10px;cursor:pointer;transition:background 0.25s,transform 0.15s;">注册</button>
             </form>

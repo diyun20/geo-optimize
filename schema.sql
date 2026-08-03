@@ -351,3 +351,30 @@ CREATE TABLE IF NOT EXISTS `virtual_collections` (
   CONSTRAINT `virtual_collections_ibfk_2` FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS `tickets` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `status` enum('open','in_progress','closed') NOT NULL DEFAULT 'open',
+  `priority` int(11) NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_user` (`user_id`),
+  KEY `idx_status` (`status`),
+  CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `ticket_replies` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ticket_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `content` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_ticket` (`ticket_id`),
+  CONSTRAINT `ticket_replies_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `ticket_replies_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+

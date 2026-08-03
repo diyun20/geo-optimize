@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         dbExecute("INSERT INTO site_settings (setting_key,setting_value,updated_at) VALUES (?,?,NOW()) ON DUPLICATE KEY UPDATE setting_value=?,updated_at=NOW()", ['contact_qq', trim($_POST['contact_qq']??''), trim($_POST['contact_qq']??'')]);
         dbExecute("INSERT INTO site_settings (setting_key,setting_value,updated_at) VALUES (?,?,NOW()) ON DUPLICATE KEY UPDATE setting_value=?,updated_at=NOW()", ['contact_wechat', trim($_POST['contact_wechat']??''), trim($_POST['contact_wechat']??'')]);
         dbExecute("INSERT INTO site_settings (setting_key,setting_value,updated_at) VALUES (?,?,NOW()) ON DUPLICATE KEY UPDATE setting_value=?,updated_at=NOW()", ['contact_email', trim($_POST['contact_email']??''), trim($_POST['contact_email']??'')]);
+        dbExecute("INSERT INTO site_settings (setting_key,setting_value,updated_at) VALUES (?,?,NOW()) ON DUPLICATE KEY UPDATE setting_value=?,updated_at=NOW()", ['captcha_enabled', ($_POST['captcha_enabled']??'0')==='1'?'1':'0', ($_POST['captcha_enabled']??'0')==='1'?'1':'0']);
         setFlash('success', '网站设置已保存');
     }
 
@@ -112,6 +113,7 @@ $siteName = dbFetchOne("SELECT setting_value FROM site_settings WHERE setting_ke
 $titleSuffix = dbFetchOne("SELECT setting_value FROM site_settings WHERE setting_key='title_suffix'")['setting_value'] ?? '';
 $metaKeywords = dbFetchOne("SELECT setting_value FROM site_settings WHERE setting_key='meta_keywords'")['setting_value'] ?? '';
 $metaDescription = dbFetchOne("SELECT setting_value FROM site_settings WHERE setting_key='meta_description'")['setting_value'] ?? '';
+$captchaEnabled = (dbFetchOne("SELECT setting_value FROM site_settings WHERE setting_key='captcha_enabled'")['setting_value'] ?? '0') === '1';
 ?>
 
 <div class="page-header">
@@ -142,6 +144,12 @@ $metaDescription = dbFetchOne("SELECT setting_value FROM site_settings WHERE set
             </div>
             <h4 style="margin:20px 0 10px;font-size:14px;color:#374151;">📞 联系信息</h4>
             <p style="font-size:12px;color:#9ca3af;margin-bottom:10px;">首页底部联系信息自动读取管理员账户资料，请前往 <a href="index.php?route=password" style="color:#4f46e5;">个人信息</a> 页面修改。</p>
+            <div class="form-group" style="display:flex;align-items:center;gap:10px;">
+                <label style="margin:0;cursor:pointer;">🔐 登录注册验证码</label>
+                <input type="hidden" name="captcha_enabled" value="0">
+                <input type="checkbox" name="captcha_enabled" value="1" <?= ($captchaEnabled?'checked':'') ?> style="width:18px;height:18px;cursor:pointer;">
+                <small style="color:#9ca3af;">开启后登录和注册页面需要输入图形验证码</small>
+            </div>
             <button type="submit" class="btn btn-primary">保存设置</button>
         </form>
     </div>
